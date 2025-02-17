@@ -104,6 +104,22 @@ Laravel Sail is a lightweight command-line interface for interacting with Larave
 2. Collections are displayed with their associated files.
 3. Files can be removed from specific collections without deleting the file from the server.
 
+## Routes
+
+The application defines the following routes:
+
+- **GET /**: Displays the welcome page.
+- **GET /profile**: Displays the profile edit page.
+- **PATCH /profile**: Updates the user's profile.
+- **DELETE /profile**: Deletes the user's profile.
+- **GET /upload**: Displays the file upload page.
+- **GET /files**: Returns a JSON response with all uploaded files.
+- **DELETE /files/{id}**: Removes a file association or deletes the file if it has no other associations.
+- **DELETE /files/force/{id}**: Force deletes a file from the server.
+- **DELETE /files/{mediaId}/collection/{collectionId}**: Removes a file association from a specific collection.
+- **GET /dashboard**: Displays files grouped by collections.
+- **GET /all-files**: Displays a list of all files with their details and actions.
+
 ## Contributing
 
 Thank you for considering contributing to the File-Server project! Please read the [contribution guide](https://laravel.com/docs/contributions) for details on how to contribute.
