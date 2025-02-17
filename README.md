@@ -7,60 +7,111 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About File-Server
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+File-Server is a web application built with Laravel that supports large file uploads up to 15GB. It allows users to upload, manage, and organize files into collections. The application provides features such as resumable uploads, file association with multiple collections, and the ability to remove associations or force delete files.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Large file uploads up to 15GB
+- Resumable uploads using Resumable.js
+- Organize files into collections
+- Remove file associations from collections
+- Force delete files from the server
+- User authentication and profile management
 
-## Learning Laravel
+## Requirements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.0 or higher
+- Composer
+- Docker (for Laravel Sail)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone the repository:
 
-## Laravel Sponsors
+    ```bash
+    git clone https://github.com/aecwells/file-server.git
+    cd file-server
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. Install dependencies:
 
-### Premium Partners
+    ```bash
+    composer install
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3. Copy the `.env.example` file to `.env` and configure your environment variables:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+4. Generate an application key:
+
+    ```bash
+    php artisan key:generate
+    ```
+
+5. Run the database migrations:
+
+    ```bash
+    php artisan migrate
+    ```
+
+## Development with Laravel Sail
+
+Laravel Sail is a lightweight command-line interface for interacting with Laravel's default Docker development environment.
+
+1. Install Laravel Sail:
+
+    ```bash
+    composer require laravel/sail --dev
+    ```
+
+2. Start the Docker containers:
+
+    ```bash
+    ./vendor/bin/sail up
+    ```
+
+3. Run the database migrations:
+
+    ```bash
+    ./vendor/bin/sail artisan migrate
+    ```
+
+4. Access the application in your browser at [http://localhost](http://localhost).
+
+## Usage
+
+### Uploading Files
+
+1. Navigate to the upload page.
+2. Enter an optional collection name.
+3. Drag and drop your file into the drop zone or click to browse and select a file.
+4. The upload progress will be displayed, and the file will be uploaded in chunks.
+
+### Managing Files
+
+1. Navigate to the files page to view all uploaded files.
+2. Files are listed with their details, including name, size, MIME type, and upload date.
+3. Each file can be downloaded, removed from a collection, or force deleted from the server.
+
+### Collections
+
+1. Files can be organized into collections.
+2. Collections are displayed with their associated files.
+3. Files can be removed from specific collections without deleting the file from the server.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Thank you for considering contributing to the File-Server project! Please read the [contribution guide](https://laravel.com/docs/contributions) for details on how to contribute.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within File-Server, please send an e-mail to the project maintainer. All security vulnerabilities will be promptly addressed.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+File-Server is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
