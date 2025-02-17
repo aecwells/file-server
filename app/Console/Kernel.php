@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
         Commands\RemoveFileAssociation::class,
         Commands\ListGroupedFiles::class,
         Commands\ListAllFiles::class,
+        Commands\ListCollections::class, // Add the new command here
     ];
 
     protected function schedule(Schedule $schedule)
