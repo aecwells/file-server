@@ -284,4 +284,18 @@ class MediaController extends Controller
 
         return redirect()->back()->with('success', 'Association removed successfully.');
     }
+
+    public function download($collectionName, $filename)
+    {
+        $collection = Collection::where('name', $collectionName)->firstOrFail();
+        $media = $collection->media()->where('name', pathinfo($filename, PATHINFO_FILENAME))->firstOrFail();
+
+        $filePath = storage_path("app/public/{$media->path}");
+
+        if (!file_exists($filePath)) {
+            abort(404, 'File not found.');
+        }
+
+        return response()->download($filePath, $media->name . '.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
+    }
 }

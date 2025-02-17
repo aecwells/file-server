@@ -29,14 +29,14 @@
                                 </li>
                                 @foreach ($collection->media as $file)
                                     <li class="flex justify-between items-center py-2 border-b border-gray-300 dark:border-gray-700">
-                                        <span class="text-gray-700 dark:text-gray-300">{{ $file->name }}</span>
+                                        <span class="text-gray-700 dark:text-gray-300 break-words">{{ $file->name }}</span>
                                         <span class="text-gray-700 dark:text-gray-300">{{ $file->disk }}</span>
-                                        <span class="text-gray-700 dark:text-gray-300">{{ $file->size }}</span>
+                                        <span class="text-gray-700 dark:text-gray-300">{{ humanReadableSize($file->size) }}</span>
                                         <span class="text-gray-700 dark:text-gray-300">{{ $file->mime_type }}</span>
                                         <span class="text-gray-700 dark:text-gray-300">{{ $file->created_at->diffForHumans() }}</span>
 
                                         <div>
-                                            <a href="{{ Storage::url($file->path) }}" target="_blank" 
+                                            <a href="{{ route('download.file', ['collection' => $collection->name, 'filename' => $file->name . '.' . pathinfo($file->file_name, PATHINFO_EXTENSION)]) }}" target="_blank" 
                                                class="text-indigo-600 dark:text-indigo-400 hover:underline mr-4">
                                                {{ __('Download') }}
                                             </a>
@@ -61,3 +61,12 @@
         </div>
     </div>
 </x-app-layout>
+
+@php
+function humanReadableSize($size)
+{
+    $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    $power = $size > 0 ? floor(log($size, 1024)) : 0;
+    return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+}
+@endphp

@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/files/{mediaId}/collection/{collectionId}', [MediaController::class, 'removeAssociation'])->name('upload.removeAssociation');
     Route::get('/dashboard', [MediaController::class, 'listGroupedFiles'])->name('dashboard');
     Route::get('/all-files', [MediaController::class, 'listAllFiles'])->name('upload.allFiles');
+    Route::get('/download/{collection}/{filename}', [MediaController::class, 'download'])->name('download.file');
 });
 
 #Route::get('/upload', [UploadController::class, 'index'])->name('upload.index');
