@@ -5,6 +5,7 @@ PHP = php
 COMPOSER = composer
 NPM = npm
 SAIL = ./vendor/bin/sail
+DOCKER_COMPOSE = docker-compose
 
 # Default target
 .DEFAULT_GOAL := help
@@ -43,6 +44,18 @@ sail-versions: ## Display Sail versions
 	$(SAIL) php --version
 	$(SAIL) composer --version
 	$(SAIL) npm --version
+
+docker-build: ## Build Docker images
+	$(DOCKER_COMPOSE) build
+
+docker-up: ## Start Docker containers
+	$(DOCKER_COMPOSE) up -d
+
+docker-down: ## Stop Docker containers
+	$(DOCKER_COMPOSE) down
+
+docker-logs: ## View Docker logs
+	$(DOCKER_COMPOSE) logs -f
 
 key-generate: ## Generate application key
 	$(PHP) artisan key:generate
