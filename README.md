@@ -22,7 +22,7 @@ File-Server is a web application built with Laravel that supports large file upl
 
 ## Requirements
 
-- PHP 8.0 or higher
+- PHP 8.2 or higher
 - Composer
 - Docker (for Laravel Sail)
 - Node.js and npm
