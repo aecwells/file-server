@@ -10,17 +10,33 @@ use Illuminate\Support\Str;
 
 class MediaController extends Controller
 {
+    /**
+     * Display the upload page.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         return view('upload');
     }
     
+    /**
+     * Display files grouped by collections.
+     *
+     * @return \Illuminate\View\View
+     */
     public function listGroupedFiles()
     {
         $collections = Collection::with('media')->get();
         return view('files.index', compact('collections'));
     }
 
+    /**
+     * Handle file upload.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function upload(Request $request)
     {
         // Handle GET request for checking chunk existence
@@ -75,7 +91,12 @@ class MediaController extends Controller
         return response()->json(['message' => 'Chunk uploaded'], 200);
     }
 
-    // Handle chunk existence check (GET request)
+    /**
+     * Handle chunk existence check (GET request).
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     private function checkChunkExists(Request $request)
     {
         $fileIdentifier = $request->input('resumableIdentifier');
@@ -94,7 +115,13 @@ class MediaController extends Controller
         return response()->json(['message' => 'Chunk not uploaded'], 404);
     }
 
-    // Check if all chunks have been uploaded
+    /**
+     * Check if all chunks have been uploaded.
+     *
+     * @param string $tempDir
+     * @param int $totalChunks
+     * @return bool
+     */
     private function allChunksUploaded($tempDir, $totalChunks)
     {
         for ($i = 1; $i <= $totalChunks; $i++) {
@@ -109,6 +136,15 @@ class MediaController extends Controller
         return true;
     }
 
+    /**
+     * Assemble file from chunks.
+     *
+     * @param string $tempDir
+     * @param string $fileName
+     * @param string $collectionNames
+     * @param string $fileIdentifier
+     * @return \Illuminate\Http\JsonResponse
+     */
     private function assembleFile($tempDir, $fileName, $collectionNames, $fileIdentifier)
     {
         // Default to 'uncategorized' if no collections are provided
@@ -197,11 +233,22 @@ class MediaController extends Controller
         ], 200);
     }
 
+    /**
+     * List all files.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function listFiles()
     {
         return response()->json(Media::all());
     }
 
+    /**
+     * Delete a directory and its contents.
+     *
+     * @param string $dir
+     * @return void
+     */
     private function deleteDirectory($dir)
     {
         if (!is_dir($dir)) {
@@ -224,6 +271,12 @@ class MediaController extends Controller
         rmdir($dir);
     }
 
+    /**
+     * Delete a file.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function delete($id)
     {
         $media = Media::findOrFail($id);
@@ -243,6 +296,12 @@ class MediaController extends Controller
         return redirect()->back()->with('success', 'File deleted successfully.');
     }
 
+    /**
+     * Force delete a file.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function forceDelete($id)
     {
         $media = Media::findOrFail($id);
@@ -259,12 +318,24 @@ class MediaController extends Controller
         return redirect()->back()->with('success', 'File force deleted successfully.');
     }
 
+    /**
+     * List all files with their collections.
+     *
+     * @return \Illuminate\View\View
+     */
     public function listAllFiles()
     {
         $files = Media::with('collections')->get();
         return view('files.list', compact('files'));
     }
 
+    /**
+     * Remove a file association from a specific collection.
+     *
+     * @param int $mediaId
+     * @param int $collectionId
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function removeAssociation($mediaId, $collectionId)
     {
         $media = Media::findOrFail($mediaId);
@@ -285,6 +356,13 @@ class MediaController extends Controller
         return redirect()->back()->with('success', 'Association removed successfully.');
     }
 
+    /**
+     * Download a file by collection and filename.
+     *
+     * @param string $collectionName
+     * @param string $filename
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
     public function download($collectionName, $filename)
     {
         $collection = Collection::where('name', $collectionName)->firstOrFail();
