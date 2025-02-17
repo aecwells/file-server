@@ -9,6 +9,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/upload', [MediaController::class, 'upload'])->name('upload.store');
-Route::get('/upload', [MediaController::class, 'upload'])->name('upload.store');
-Route::get('/files', [MediaController::class, 'listFiles'])->name('upload.list');
+Route::post('/upload', [MediaController::class, 'upload'])->name('api.upload.store');
+Route::get('/upload', [MediaController::class, 'upload'])->name('api.upload.store');
+Route::get('/files', [MediaController::class, 'listFiles'])->name('api.upload.list');

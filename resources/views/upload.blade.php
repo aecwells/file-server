@@ -66,7 +66,7 @@
             let progressText = document.getElementById("progress-text");
 
             let resumable = new Resumable({
-                target: "{{ route('upload.store') }}",
+                target: "{{ route('api.upload.store') }}",
                 method: 'POST', // Ensure POST is being used
                 query: function () {
                     return { collection: document.getElementById('collection').value };
