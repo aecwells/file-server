@@ -120,14 +120,6 @@ The application defines the following routes:
 - **GET /dashboard**: Displays files grouped by collections.
 - **GET /all-files**: Displays a list of all files with their details and actions.
 
-## Contributing
-
-Thank you for considering contributing to the File-Server project! Please read the [contribution guide](https://laravel.com/docs/contributions) for details on how to contribute.
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within File-Server, please send an e-mail to the project maintainer. All security vulnerabilities will be promptly addressed.
-
 ## License
 
 File-Server is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
