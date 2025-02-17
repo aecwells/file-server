@@ -25,6 +25,7 @@ File-Server is a web application built with Laravel that supports large file upl
 - PHP 8.0 or higher
 - Composer
 - Docker (for Laravel Sail)
+- Node.js and npm
 
 ## Installation
 
@@ -38,7 +39,7 @@ File-Server is a web application built with Laravel that supports large file upl
 2. Install dependencies:
 
     ```bash
-    composer install
+    make install
     ```
 
 3. Copy the `.env.example` file to `.env` and configure your environment variables:
@@ -50,13 +51,19 @@ File-Server is a web application built with Laravel that supports large file upl
 4. Generate an application key:
 
     ```bash
-    php artisan key:generate
+    make key-generate
     ```
 
 5. Run the database migrations:
 
     ```bash
-    php artisan migrate
+    make migrate
+    ```
+
+6. Build the frontend assets:
+
+    ```bash
+    make build
     ```
 
 ## Development with Laravel Sail
@@ -66,19 +73,19 @@ Laravel Sail is a lightweight command-line interface for interacting with Larave
 1. Install Laravel Sail:
 
     ```bash
-    composer require laravel/sail --dev
+    make sail-install
     ```
 
 2. Start the Docker containers:
 
     ```bash
-    ./vendor/bin/sail up
+    make sail-up
     ```
 
 3. Run the database migrations:
 
     ```bash
-    ./vendor/bin/sail artisan migrate
+    make sail-migrate
     ```
 
 4. Access the application in your browser at [http://localhost](http://localhost).
@@ -119,6 +126,24 @@ The application defines the following routes:
 - **DELETE /files/{mediaId}/collection/{collectionId}**: Removes a file association from a specific collection.
 - **GET /dashboard**: Displays files grouped by collections.
 - **GET /all-files**: Displays a list of all files with their details and actions.
+
+## Makefile
+
+The Makefile includes common tasks for managing the application. Here are some useful commands:
+
+- `make install`: Install PHP and Node.js dependencies.
+- `make migrate`: Run database migrations.
+- `make sail-install`: Install Laravel Sail.
+- `make sail-up`: Start the Docker containers.
+- `make sail-migrate`: Run database migrations with Sail.
+- `make sail-down`: Stop the Docker containers.
+- `make sail-test`: Run tests with Sail.
+- `make sail-versions`: Display Sail versions.
+- `make key-generate`: Generate an application key.
+- `make serve`: Start the development server.
+- `make test`: Run tests.
+- `make build`: Build frontend assets.
+- `make clean`: Clean up the project.
 
 ## License
 
