@@ -127,6 +127,27 @@ The application defines the following routes:
 - **GET /dashboard**: Displays files grouped by collections.
 - **GET /all-files**: Displays a list of all files with their details and actions.
 
+## Artisan Commands
+
+The application includes Artisan commands for managing common tasks. Here are some useful commands:
+
+- `php artisan app:list-files`: List all uploaded files.
+- `php artisan app:delete-file {file_id}`: Delete a file.
+- `php artisan app:force-delete-file {file_id}`: Force delete a file from the server.
+- `php artisan app:remove-file-association {file_id} {collection_id}`: Remove a file association from a specific collection.
+- `php artisan app:list-grouped-files`: Display files grouped by collections.
+- `php artisan app:list-all-files`: Display a list of all files with their details and actions.
+
+## Development Container
+
+The application supports development container environments. To use the development container, follow these steps:
+
+1. Ensure you have Docker and Visual Studio Code installed.
+2. Open the project in Visual Studio Code.
+3. Press `F1` and select `Remote-Containers: Open Folder in Container...`.
+4. Select the project folder.
+5. The development container will be built and started automatically.
+
 ## Makefile
 
 The Makefile includes common tasks for managing the application. Here are some useful commands:
