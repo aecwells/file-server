@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MediaController;
@@ -23,6 +25,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/files/{mediaId}/collection/{collectionId}', [MediaController::class, 'removeAssociation'])->name('upload.removeAssociation');
     Route::get('/dashboard', [MediaController::class, 'listGroupedFiles'])->name('dashboard');
     Route::get('/download/{collection}/{filename}', [MediaController::class, 'download'])->name('download.file');
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
 });
 
 require __DIR__.'/auth.php';

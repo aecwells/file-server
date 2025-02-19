@@ -2,19 +2,17 @@
 
 namespace App\View\Components;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Alert extends Component
 {
     public $type;
-    public $messages;
+    public $message;
 
-    public function __construct($type, $messages)
+    public function __construct($type, $message = null)
     {
         $this->type = $type;
-        $this->message = $messages;
+        $this->message = $message;
     }
 
     public function render()
