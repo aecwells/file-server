@@ -33,13 +33,13 @@
                                         <span class="text-gray-700 dark:text-gray-300">{{ $file->created_at->diffForHumans() }}</span>
                                         <div class="flex items-center space-x-2">
                                             <a href="{{ Storage::url($file->path) }}" target="_blank" 
-                                               class="text-indigo-600 dark:text-indigo-400 hover:underline" title="Download">
+                                                class="btn btn-outline btn-success tooltip" data-tip="Download" title="Download">
                                                <i class="fas fa-circle-down"></i>
                                             </a>
                                             <form action="{{ route('upload.delete', $file->id) }}" method="POST" class="inline-block" title="Remove Association">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you sure?')" class="text-red-600 dark:text-red-400 hover:underline">
+                                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-outline btn-error tooltip" data-tip="Remove Association">
                                                     
                                                     <i class="fas fa-trash"></i>
                                                 </button>
@@ -47,7 +47,7 @@
                                             <form action="{{ route('upload.forceDelete', $file->id) }}" method="POST" class="inline-block" title="Force Delete">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you sure? This will delete the file from disk.')" class="text-red-600 dark:text-red-400 hover:underline">
+                                                <button type="submit" onclick="return confirm('Are you sure? This will delete the file from disk.')" class="btn btn-outline btn-error tooltip" data-tip="Force Delete">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
@@ -62,7 +62,7 @@
                                                     <form action="{{ route('upload.removeAssociation', ['mediaId' => $file->id, 'collectionId' => $collection->id]) }}" method="POST" class="inline-block" title="Remove Association">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" onclick="return confirm('Are you sure?')" class="text-red-600 dark:text-red-400 hover:underline">
+                                                        <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-outline btn-error tooltip" data-tip="Remove Association">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>

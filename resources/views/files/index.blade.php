@@ -37,14 +37,14 @@
 
                                         <div>
                                             <a href="{{ route('download.file', ['collection' => $collection->name, 'filename' => $file->name . '.' . pathinfo($file->file_name, PATHINFO_EXTENSION)]) }}" target="_blank" 
-                                               class="text-indigo-600 dark:text-indigo-400 hover:underline mr-4">
+                                               class="btn tooltip" data-tip="Download">
                                                <i class="fas fa-circle-down"></i>
                                             </a>
                                             <form action="{{ route('upload.delete', $file->id) }}" method="POST" class="inline-block">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" onclick="return confirm('Are you sure?')"
-                                                    class="text-red-600 dark:text-red-400 hover:underline">
+                                                    class="btn tooltip" data-tip="Delete">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
