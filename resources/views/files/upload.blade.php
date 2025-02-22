@@ -54,9 +54,15 @@
         </div>
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/resumablejs"></script>
+    
+    @push('footer.scripts')
+        
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            if (typeof Resumable === 'undefined') {
+                console.error('Resumable is not defined');
+                return;
+            }
             let collection = document.getElementById("collection");
             let dropZone = document.getElementById("drop-zone");
          
@@ -128,5 +134,6 @@
             });
         });
     </script>
-    {{ phpinfo()}}
+    @endpush
+    
 </x-app-layout>
