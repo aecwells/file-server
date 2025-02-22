@@ -1,27 +1,29 @@
 {{-- filepath: /home/cwells/projects/file-server/resources/views/roles/edit.blade.php --}}
 <x-app-layout>
-    @section('content')
-        <div class="container mx-auto px-4">
-            <x-slot name="header">
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __('Edit Role') }}
-                </h2>
-                <x-button-link href="{{ route('roles.index') }}" class="bg-blue-500 text-white float-right">Back</x-button-link>
-            </x-slot>
-            <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 text-gray-900 dark:text-gray-100"></div>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Edit Role') }}
+        </h2>
+        
+    </x-slot>
+  
+        
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <x-button-link href="{{ route('roles.index') }}"
+            class="bg-blue-500 text-white float-right">Back</x-button-link>
+                    <div class="p-6 text-gray-900 dark:text-gray-100">
 
                         @if (count($errors) > 0)
-                        <x-alert type="danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </x-alert>
+                            <x-alert type="danger">
+                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </x-alert>
                         @endif
 
                         <form action="{{ route('roles.update', $role->id) }}" method="POST">
@@ -47,5 +49,5 @@
                 </div>
             </div>
         </div>
-    @endsection
+  
 </x-app-layout>

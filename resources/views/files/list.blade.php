@@ -34,26 +34,21 @@
                                         <div class="flex items-center space-x-2">
                                             <a href="{{ Storage::url($file->path) }}" target="_blank" 
                                                class="text-indigo-600 dark:text-indigo-400 hover:underline" title="Download">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12v6m0 0l-3-3m3 3l3-3m-6-6h6a2 2 0 012 2v4a2 2 0 01-2 2H9a2 2 0 01-2-2V8a2 2 0 012-2z" />
-                                                </svg>
+                                               <i class="fas fa-circle-down"></i>
                                             </a>
                                             <form action="{{ route('upload.delete', $file->id) }}" method="POST" class="inline-block" title="Remove Association">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" onclick="return confirm('Are you sure?')" class="text-red-600 dark:text-red-400 hover:underline">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                    </svg>
+                                                    
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
                                             <form action="{{ route('upload.forceDelete', $file->id) }}" method="POST" class="inline-block" title="Force Delete">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" onclick="return confirm('Are you sure? This will delete the file from disk.')" class="text-red-600 dark:text-red-400 hover:underline">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                    </svg>
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
                                         </div>
@@ -68,9 +63,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" onclick="return confirm('Are you sure?')" class="text-red-600 dark:text-red-400 hover:underline">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                            </svg>
+                                                            <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
                                                 </li>

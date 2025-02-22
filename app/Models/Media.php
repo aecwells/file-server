@@ -51,6 +51,12 @@ class Media extends Model
         static::deleting(function ($media) {
             Storage::disk($media->disk)->delete($media->path);
         });
+
+        static::saving(function ($media) {
+            if ($media->isDirty('collection_id') && $media->collection_id !== 'uncategorized') {
+                $media->collections()->detach('uncategorized');
+            }
+        });
     }
 
     /**

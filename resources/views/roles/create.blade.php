@@ -1,11 +1,5 @@
 {{-- filepath: /home/cwells/projects/file-server/resources/views/roles/create.blade.php --}}
-@extends('layouts.app')
-
-@php
-// use Illuminate\Support\Facades\Form;
-@endphp
-
-@section('content')
+<x-app-layout>
 <div class="container mx-auto px-4">
     <div class="flex justify-between items-center py-4">
         <h2 class="text-2xl font-semibold">Create New Role</h2>
@@ -45,4 +39,4 @@
     </form>
     {!! Form::close() !!}
 </div>
-@endsection
+</x-app-layout>

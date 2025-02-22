@@ -40,6 +40,7 @@
 
                     <div id="file-info" class="hidden mt-4 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-900 dark:text-gray-200">
                         <p><strong>File Name:</strong> <span id="file-name"></span></p>
+                        <p><strong>File uniqueIdentifier:</strong> <span id="file-uniqueIdentifier"></span></p>
                         <p><strong>Size:</strong> <span id="file-size"></span></p>
                     </div>
                     <div id="upload-progress" class="mt-4 hidden">
@@ -58,8 +59,10 @@
         document.addEventListener("DOMContentLoaded", function () {
             let collection = document.getElementById("collection");
             let dropZone = document.getElementById("drop-zone");
+         
             let fileInput = document.getElementById("file-upload");
             let fileInfo = document.getElementById("file-info");
+            let fileUniqueIdentifier = document.getElementById("file-uniqueIdentifier");
             let fileNameSpan = document.getElementById("file-name");
             let fileSizeSpan = document.getElementById("file-size");
             let progressBar = document.getElementById("progress-bar");
@@ -89,8 +92,10 @@
                 // Show file information
                 fileInfo.classList.remove("hidden");
                 fileNameSpan.textContent = file.fileName;
+                fileUniqueIdentifier.textContent = file.uniqueIdentifier;
                 fileSizeSpan.textContent = (file.size / (1024 * 1024)).toFixed(2) + " MB";
-                //document.getElementById('collection').value = '';
+              
+                
                 // Show progress bar
                 document.getElementById('upload-progress').classList.remove('hidden');
                 progressText.textContent = "Uploading... 0%";
@@ -123,4 +128,5 @@
             });
         });
     </script>
+    {{ phpinfo()}}
 </x-app-layout>

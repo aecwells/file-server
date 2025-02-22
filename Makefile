@@ -31,6 +31,9 @@ sail-install: ## Install Laravel Sail
 sail-up: ## Start the Docker containers
 	$(SAIL) up
 
+sail-seed: ## Seed the database with Sail
+	$(SAIL) artisan db:seed
+	
 sail-migrate: ## Run database migrations with Sail
 	$(SAIL) artisan migrate
 

@@ -1,7 +1,12 @@
 {{-- filepath: /home/cwells/projects/file-server/resources/views/users/create.blade.php --}}
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        {{ __('Create New User<') }}
+        </h2>
+    </x-slot>
 
-@section('content')
+
 <div class="container mx-auto px-4">
     <div class="flex justify-between items-center py-4">
         <h2 class="text-2xl font-semibold">Create New User</h2>
