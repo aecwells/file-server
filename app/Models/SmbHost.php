@@ -15,6 +15,7 @@ class SmbHost extends Model
         'username',
         'password',
         'remote_path',
+        'port',
     ];
 
     /**

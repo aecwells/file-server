@@ -26,6 +26,7 @@ class SmbHostController extends Controller
             'username' => 'required',
             'password' => 'required|string|min:8|confirmed|same:password_confirmation',
             'remote_path' => 'required',
+            'port' => 'required|integer',
         ]);
 
         SmbHost::create([
@@ -34,6 +35,7 @@ class SmbHostController extends Controller
             'username' => $request->username,
             'password' => bcrypt($request->password),
             'remote_path' => $request->remote_path,
+            'port' => $request->port,
         ]);
 
         return redirect()->route('smb_hosts.index')->with('success', 'SMB Host created successfully.');
@@ -57,6 +59,7 @@ class SmbHostController extends Controller
             'username' => 'required',
             'password' => 'nullable|string|min:8|confirmed',
             'remote_path' => 'required',
+            'port' => 'required|integer',
         ]);
 
         $smbHost->update([
@@ -65,6 +68,7 @@ class SmbHostController extends Controller
             'username' => $request->username,
             'password' => $request->password ? bcrypt($request->password) : $smbHost->password,
             'remote_path' => $request->remote_path,
+            'port' => $request->port,
         ]);
 
         return redirect()->route('smb_hosts.index')->with('success', 'SMB Host updated successfully.');

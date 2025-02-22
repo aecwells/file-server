@@ -25,6 +25,9 @@
             <x-form-group label="Remote Path">
                 <x-input type="text" name="remote_path" placeholder="Remote Path" class="input input-bordered w-full" required />
             </x-form-group>
+            <x-form-group label="Port">
+                <x-input type="number" name="port" placeholder="Port" class="input input-bordered w-full" required />
+            </x-form-group>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('smb_hosts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('host');
-            
+            $table->string('host');    
             $table->string('username');
             $table->string('password');
             $table->string('remote_path'); // Add this line
-            
+            $table->integer('port'); // Add this line
             $table->timestamps();
         });
     }

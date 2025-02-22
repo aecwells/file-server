@@ -26,6 +26,9 @@
             <x-form-group label="Remote Path">
                 <x-input type="text" name="remote_path" class="input input-bordered w-full" value="{{ $smbHost->remote_path }}" required />
             </x-form-group>
+            <x-form-group label="Port">
+                <x-input type="number" name="port" class="input input-bordered w-full" value="{{ $smbHost->port }}" required />
+            </x-form-group>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
