@@ -9,11 +9,18 @@ use Illuminate\Support\Str;
 use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
 use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
 use Pion\Laravel\ChunkUpload\Exceptions\UploadMissingFileException;
+use Illuminate\Support\Facades\Validator;
 
 class UploadService
 {
     public function handleUpload($request)
     {
+        $rules = config('upload.validation_rules');
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
         $receiver = new FileReceiver("file", $request, HandlerFactory::classFromRequest($request));
 
         if (!$receiver->isUploaded()) {
