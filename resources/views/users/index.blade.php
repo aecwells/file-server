@@ -6,12 +6,11 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Users Management') }}
         </h2>
-        @can('user-create')
-            <x-button-link href="{{ route('users.create') }}" class="bg-green-500 text-white">Create New
-                User</x-button-link>
-        @endcan
+        
     </x-slot>
+   
     <div class="py-12">
+
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -19,23 +18,26 @@
                     @if ($message = Session::get('success'))
                         <x-alert type="success" :message="$message" />
                     @endif
-
+                    @can('user-create')
+                    <x-button-link href="{{ route('users.create') }}" class="btn btn-accent float-right">Create New
+                        User</x-button-link>
+                    @endcan
                     <x-table>
                         <x-slot name="head">
                             <tr>
-                                <th class="py-2">No</th>
-                                <th class="py-2">Name</th>
-                                <th class="py-2">Email</th>
-                                <th class="py-2">Action</th>
+                                <th class="">No</th>
+                                <th class="">Name</th>
+                                <th class="">Email</th>
+                                <th class="">Action</th>
                             </tr>
                         </x-slot>
                         <x-slot name="body">
                             @foreach ($data as $key => $user)
-                                <tr class="bg-white dark:bg-gray-700">
-                                    <td class="border px-4 py-2">{{ ++$i }}</td>
-                                    <td class="border px-4 py-2">{{ $user->name }}</td>
-                                    <td class="border px-4 py-2">{{ $user->email }}</td>
-                                    <td class="border px-4 py-2">
+                                <tr class="hover:bg-base-300">
+                                    <td class="">{{ ++$i }}</td>
+                                    <td class="">{{ $user->name }}</td>
+                                    <td class="">{{ $user->email }}</td>
+                                    <td class="">
                                         <x-button-link href="{{ route('users.show', $user->id) }}"
                                             class="bg-blue-500 text-white">Show <i class="fas fa-eye"></i></x-button-link>
                                         @can('user-edit')

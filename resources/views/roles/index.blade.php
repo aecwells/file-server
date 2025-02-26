@@ -15,27 +15,26 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="flex justify-between items-center py-4 float-right">
+                   
+                    <div class="p-6 text-gray-900 dark:text-gray-100">
                         @can('role-create')
-                            <x-button-link href="{{ route('roles.create') }}" class="bg-green-500 text-white float-right">Create New
+                            <x-button-link href="{{ route('roles.create') }}" class="btn btn-accent float-right">Create New
                                 Role</x-button-link>
                         @endcan
-                    </div>
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
                         <x-table>
                             <x-slot name="head">
                                 <tr>
-                                    <th class="py-2">No</th>
-                                    <th class="py-2">Name</th>
-                                    <th class="py-2">Action</th>
+                                    <th class="">No</th>
+                                    <th class="">Name</th>
+                                    <th class="">Action</th>
                                 </tr>
                             </x-slot>
                             <x-slot name="body">
                                 @foreach ($roles as $role)
-                                    <tr class="bg-white dark:bg-gray-700">
-                                        <td class="border px-4 py-2">{{ ++$i }}</td>
-                                        <td class="border px-4 py-2">{{ $role->name }}</td>
-                                        <td class="border px-4 py-2">
+                                    <tr class="hover:bg-base-300">
+                                        <td class="">{{ ++$i }}</td>
+                                        <td class="">{{ $role->name }}</td>
+                                        <td class="">
                                             <x-button-link href="{{ route('roles.show', $role->id) }}"
                                                 class="bg-blue-500 text-white">Show</x-button-link>
                                             @can('role-edit')
