@@ -60,7 +60,13 @@ File-Server is a web application built with Laravel that supports large file upl
     make migrate
     ```
 
-6. Build the frontend assets:
+6. Seed the database:
+
+    ```bash
+    make sail-seed
+    ```
+
+7. Build the frontend assets:
 
     ```bash
     make build
