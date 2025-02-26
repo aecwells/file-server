@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\ListGroupedFiles::class,
         Commands\ListAllFiles::class,
         Commands\ListCollections::class, // Add the new command here
-        RsyncFilesToSmbHosts::class,
+        Commands\RsyncFilesToSmbHosts::class,
     ];
 
     protected function schedule(Schedule $schedule)

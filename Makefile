@@ -22,17 +22,23 @@ install: ## Install dependencies
 	$(COMPOSER) install
 	$(NPM) install
 
+key-generate: ## Generate application key
+	$(PHP) artisan key:generate
+
 migrate: ## Run database migrations
 	$(PHP) artisan migrate
+
+seed: ## Seed the database
+	$(PHP) artisan db:seed
 
 sail-up: ## Start the Docker containers
 	$(SAIL) up
 
-sail-seed: ## Seed the database with Sail
-	$(SAIL) artisan db:seed
-	
 sail-migrate: ## Run database migrations with Sail
 	$(SAIL) artisan migrate
+
+sail-seed: ## Seed the database with Sail
+	$(SAIL) artisan db:seed
 
 sail-down: ## Stop the Docker containers
 	$(SAIL) down
@@ -44,21 +50,6 @@ sail-versions: ## Display Sail versions
 	$(SAIL) php --version
 	$(SAIL) composer --version
 	$(SAIL) npm --version
-
-docker-build: ## Build Docker images
-	$(DOCKER_COMPOSE) build
-
-docker-up: ## Start Docker containers
-	$(DOCKER_COMPOSE) up -d
-
-docker-down: ## Stop Docker containers
-	$(DOCKER_COMPOSE) down
-
-docker-logs: ## View Docker logs
-	$(DOCKER_COMPOSE) logs -f
-
-key-generate: ## Generate application key
-	$(PHP) artisan key:generate
 
 serve: ## Start the development server
 	$(PHP) artisan serve
@@ -76,3 +67,15 @@ clean: ## Clean up the project
 	rm -rf storage/framework/cache/*
 	rm -rf storage/framework/sessions/*
 	rm -rf storage/framework/views/*
+
+docker-build: ## Build Docker images
+	$(DOCKER_COMPOSE) build
+
+docker-up: ## Start Docker containers
+	$(DOCKER_COMPOSE) up -d
+
+docker-down: ## Stop Docker containers
+	$(DOCKER_COMPOSE) down
+
+docker-logs: ## View Docker logs
+	$(DOCKER_COMPOSE) logs -f

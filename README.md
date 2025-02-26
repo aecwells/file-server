@@ -19,6 +19,7 @@ File-Server is a web application built with Laravel that supports large file upl
 - Remove file associations from collections
 - Force delete files from the server
 - User authentication and profile management
+- Manage SMB Hosts and sync files across SMB Hosts
 
 ## Requirements
 
@@ -63,7 +64,7 @@ File-Server is a web application built with Laravel that supports large file upl
 6. Seed the database:
 
     ```bash
-    make sail-seed
+    make seed
     ```
 
 7. Build the frontend assets:
@@ -117,6 +118,24 @@ Laravel Sail is a lightweight command-line interface for interacting with Larave
 2. Collections are displayed with their associated files.
 3. Files can be removed from specific collections without deleting the file from the server.
 
+## Managing Users, Roles, and SMB Hosts
+
+### Users
+1. Navigate to the users management page.
+2. View the list of users with their details.
+3. Add, edit, or delete users as needed.
+
+### Roles
+1. Navigate to the roles management page.
+2. View the list of roles with their details.
+3. Add, edit, or delete roles as needed.
+
+### SMB Hosts
+1. Navigate to the SMB hosts management page.
+2. View the list of SMB hosts with their details.
+3. Add, edit, or delete SMB hosts as needed.
+4. Sync files across SMB hosts.
+
 ## Routes
 
 The application defines the following routes:
@@ -132,6 +151,16 @@ The application defines the following routes:
 - **DELETE /files/{mediaId}/collection/{collectionId}**: Removes a file association from a specific collection.
 - **GET /dashboard**: Displays files grouped by collections.
 - **GET /all-files**: Displays a list of all files with their details and actions.
+- **GET /download/{collection}/{filename}**: Downloads a file by collection and filename.
+- **GET /roles**: Displays the roles management page.
+- **GET /users**: Displays the users management page.
+- **GET /smb_hosts**: Displays the SMB hosts management page.
+- **GET /smb_hosts/create**: Displays the form to add a new SMB host.
+- **POST /smb_hosts**: Stores a new SMB host.
+- **GET /smb_hosts/{id}**: Displays the details of a specific SMB host.
+- **GET /smb_hosts/{id}/edit**: Displays the form to edit a specific SMB host.
+- **PUT /smb_hosts/{id}**: Updates a specific SMB host.
+- **DELETE /smb_hosts/{id}**: Deletes a specific SMB host.
 
 ## Artisan Commands
 
@@ -143,6 +172,16 @@ The application includes Artisan commands for managing common tasks. Here are so
 - `php artisan app:remove-file-association {file_id} {collection_id}`: Remove a file association from a specific collection.
 - `php artisan app:list-grouped-files`: Display files grouped by collections.
 - `php artisan app:list-all-files`: Display a list of all files with their details and actions.
+- `php artisan app:list-users`: List all users.
+- `php artisan app:add-user {name} {email} {password}`: Add a new user.
+- `php artisan app:delete-user {user_id}`: Delete a user.
+- `php artisan app:list-roles`: List all roles.
+- `php artisan app:add-role {name}`: Add a new role.
+- `php artisan app:delete-role {role_id}`: Delete a role.
+- `php artisan app:list-smb-hosts`: List all SMB hosts.
+- `php artisan app:add-smb-host {name} {address}`: Add a new SMB host.
+- `php artisan app:delete-smb-host {host_id}`: Delete an SMB host.
+- `php artisan app:rsync-files-to-smb-hosts`: Sync files across SMB hosts.
 
 ## Development Container
 
@@ -160,9 +199,11 @@ The Makefile includes common tasks for managing the application. Here are some u
 
 - `make install`: Install PHP and Node.js dependencies.
 - `make migrate`: Run database migrations.
+- `make seed`: Seed the database.
 - `make sail-install`: Install Laravel Sail.
 - `make sail-up`: Start the Docker containers.
 - `make sail-migrate`: Run database migrations with Sail.
+- `make sail-seed`: Seed the database with Sail.
 - `make sail-down`: Stop the Docker containers.
 - `make sail-test`: Run tests with Sail.
 - `make sail-versions`: Display Sail versions.
