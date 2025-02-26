@@ -25,9 +25,6 @@ install: ## Install dependencies
 migrate: ## Run database migrations
 	$(PHP) artisan migrate
 
-sail-install: ## Install Laravel Sail
-	$(COMPOSER) require laravel/sail --dev
-
 sail-up: ## Start the Docker containers
 	$(SAIL) up
 
