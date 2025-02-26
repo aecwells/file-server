@@ -27,7 +27,7 @@
                 <td>{{ $smbHost->remote_path }}</td>
             </tr>
         </table>
-        <a href="{{ route('smb_hosts.index') }}" class="btn btn-primary">Back</a>
+        <a href="{{ route('smb_hosts.index') }}" class="btn btn-primary float-right">Back</a>
     </div>
 
 </x-app-layout>

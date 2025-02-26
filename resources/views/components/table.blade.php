@@ -1,4 +1,4 @@
-<div class="overflow-x-auto">
+
 <table class="table">
     <thead class="">
         {{ $head }}
@@ -7,4 +7,4 @@
         {{ $body }}
     </tbody>
 </table>
-</div>
+

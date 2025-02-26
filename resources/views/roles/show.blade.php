@@ -4,7 +4,6 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Show Role') }}
         </h2>
-
     </x-slot>
     <div class="container mx-auto px-4">
         <div class="py-12">

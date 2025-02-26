@@ -29,7 +29,7 @@
             <x-form-group label="Port">
                 <x-input type="number" name="port" class="input input-bordered w-full" value="{{ $smbHost->port }}" required />
             </x-form-group>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary float-right">Submit</button>
         </form>
     </div>
 </x-app-layout>

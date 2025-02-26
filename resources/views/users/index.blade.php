@@ -18,10 +18,12 @@
                     @if ($message = Session::get('success'))
                         <x-alert type="success" :message="$message" />
                     @endif
-                    @can('user-create')
-                    <x-button-link href="{{ route('users.create') }}" class="btn btn-accent float-right">Create New
-                        User</x-button-link>
-                    @endcan
+                   
+                    <div class="overflow-x-auto">
+                        @can('user-create')
+                        <x-button-link href="{{ route('users.create') }}" class="btn btn-accent float-right">Create New
+                            User</x-button-link>
+                        @endcan
                     <x-table>
                         <x-slot name="head">
                             <tr>
@@ -59,6 +61,7 @@
                     </x-table>
 
                     {!! $data->links() !!}
+                    </div>
                 </div>
             </div>
         </div>

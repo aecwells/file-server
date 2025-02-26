@@ -5,7 +5,6 @@
         </h2>
     </x-slot>
     <div class="container mx-auto p-4">
-
         <a href="{{ route('smb_hosts.create') }}" class="btn btn-primary float-right">Add SMB Host</a>
         <table class="table">
             <thead>
